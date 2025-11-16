@@ -41,7 +41,7 @@ public class DSKH
                     themkh(kh);
                 }
                 else {
-                    System.out.println("Dong du lieu khong hop le" + line);
+                    System.out.println("Dong du lieu khong hop le " + line);
                 }
             }
             System.out.println("=> Doc file thanh cong, co "+n+" khach hang. ");
@@ -90,98 +90,84 @@ public class DSKH
         {
             try {
                 dskh[n-1].ghiFIle();
-            } catch (Exception e) {
+            } catch (IOException e) {
                 System.out.println("=>LOI: Khong the ghi thong tin khach hang vao file!" + e.getMessage());
             }
         }
     }
-    public void suamakh(String maKH)
-    {
+    public void suakh(String maKH) {
         Scanner sc = new Scanner(System.in);
-        for(int i=0;i<n;i++)
-        {
-            if(dskh[i].getMakhachhang().equalsIgnoreCase(maKH))
-            {
+        for (int i = 0; i < n; i++) {
+            if (dskh[i].getMakhachhang().equalsIgnoreCase(maKH)) {
                 int k;
-                do
-                {
-                    System.out.println("Chon thong tin can sua: ");
-                    System.out.println("1. Ho khach hang.");
-                    System.out.println("2. Ten khach hang.");
-                    System.out.println("3. So dien thoai khach hang.");
-                    System.out.println("4. Dia chi khach hang.");
-                    System.out.println("Nhap lua chon: ");
-                    k=sc.nextInt();
-                    sc.nextLine();
-                    switch (k) {
-                        case 1:
-                        {
-                            System.out.print("Nhap ho moi khach hang: ");
-                            String hokh=sc.nextLine();
-                            dskh[i].setHokh(hokh);
-                            break;
-                        }
-                        
-                        case 2:
-                        {
-                            System.out.print("Nhap ten moi khach hang: ");
-                            String tenkh=sc.nextLine();
-                            dskh[i].setTenkh(tenkh);
-                            break;
-                        }
+                do {
+                System.out.println("Chon thong tin can sua:");
+                System.out.println("1. Ma khach hang");
+                System.out.println("2. Ho khach hang");
+                System.out.println("3. Ten khach hang");
+                System.out.println("4. So dien thoai khach hang");
+                System.out.println("5. Dia chi khach hang");
+                System.out.print("Nhap lua chon: ");
+                k = sc.nextInt();
+                sc.nextLine();
 
-                        case 3:
-                        {
-                            System.out.print("Nhap so dien thoai moi khach hang: ");
-                            String sdt=sc.nextLine();
-                            dskh[i].setSdt(sdt);
-                            break;
-                        }
-
-                        case 4:
-                        {
-                            System.out.print("Nhap dia chi moi khach hang: ");
-                            String diachi=sc.nextLine();
-                            dskh[i].setDiachi(diachi);
-                            break;
-                        }
-
-                        default:
-                        {
-                            System.out.println("Lua chon khong hop le!");
-                        }
-                            break;
-                    }
+                switch (k) {
+                    case 1:
+                        System.out.print("Nhap ma khach hang moi: ");
+                        dskh[i].setMakhachhang(sc.nextLine());
+                        break;
+                    case 2:
+                        System.out.print("Nhap ho khach hang moi: ");
+                        dskh[i].setHokh(sc.nextLine());
+                        break;
+                    case 3:
+                        System.out.print("Nhap ten khach hang moi: ");
+                        dskh[i].setTenkh(sc.nextLine());
+                        break;
+                    case 4:
+                        System.out.print("Nhap so dien thoai khach hang moi: ");
+                        dskh[i].setSdt(sc.nextLine());
+                        break;
+                    case 5:
+                        System.out.println("Nhap dia chi khach hang moi: ");
+                        dskh[i].setDiachi(sc.nextLine());
+                        break;
+                    case 0 :
+                        System.out.println("Thoat chon");
+                        break;
+                    
+                    default:
+                        System.out.println("Lua chon khong hop le!");
+                        return;
                 }
-                while (k != 0);
-                return;
+            } while (k != 0);
+            return;
             }
-        }
-        System.out.println("Khong tim thay khach hang can sua!");
+         }
+            System.out.println("Khong tim thay ma khach hang: " + maKH);
     }
     public void xoakh(String maKH)
     {
-        int vitricanxoa=-1;
+        boolean tim = false;
         for(int i=0;i<n;i++)
         {
-            if(dskh[i].getMakhachhang().equals(maKH))
+            if(dskh[i].getMakhachhang().equalsIgnoreCase(maKH));
             {
-                vitricanxoa=i;
+                for(int j=i;j<n-1;j++)
+                {
+                    dskh[j]=dskh[j+1];
+                }
+                dskh=Arrays.copyOf(dskh, n-1);
+                n--;
+                tim=true;
+                System.out.println("Da xoa khach hang co ma: " + maKH);
                 break;
             }
         }
-        if(vitricanxoa==-1)
+        if(!tim)
         {
-            System.out.println("Khong tim thay khach hang co ma: "+maKH);
-            return;
+            System.out.println("Khong tim thay ma khach hang can xoa!");
         }
-        for(int j=vitricanxoa;j<n-1;j++)
-        {
-            dskh[j]=dskh[j+1];
-        }
-        dskh=Arrays.copyOf(dskh, n-1);
-        n--;
-        System.out.println("Xoa khach hang thanh cong!");
     }
     public KhachHang timkiemma(String maKH)
     {
@@ -262,7 +248,7 @@ public class DSKH
                 bw.newLine();
             }
             System.out.println("Ghi file thanh cong!");
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.out.println("LOI: Khong the ghi file!" + e.getMessage());
         }
     }

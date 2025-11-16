@@ -34,12 +34,12 @@ public class HoaDon
 
     public String getMaHoaDon() { return mahoadon; }
     public void setMaHoaDon(String maHoaDon) { this.mahoadon = maHoaDon; }
-    public String getmakhachhangachHang() { return makhachhang; }
-    public void setmakhachhangachHang(String makhachhangachHang) { this.makhachhang = makhachhangachHang; }
+    public String getMakhachhang() { return makhachhang; }
+    public void setMakhachhang(String makhachhangachHang) { this.makhachhang = makhachhangachHang; }
     public String getNgayLap() { return ngaylap; }
     public void setNgayLap(String ngayLap) { this.ngaylap = ngayLap; }
-    public double gettongtien() { return tongtien; }
-    public void settongtien(double tongtien) { this.tongtien = tongtien; }
+    public double getTongtien() { return tongtien; }
+    public void setTongtien(double tongtien) { this.tongtien = tongtien; }
 
     public void nhaphd()
     {
