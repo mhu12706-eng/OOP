@@ -107,10 +107,13 @@ public class DSHD
             }
         }
     }
-   public void SuaHD(String maHD) {
+   public void SuaHD() {
         Scanner sc = new Scanner(System.in);
+        System.out.println("Nhap vao ma hoa don can sua: ");
+        String ma =sc.nextInt();
+        sc.nextLine();
         for (int i = 0; i < n; i++) {
-            if (dshd[i].getMaHoaDon().equalsIgnoreCase(maHD)) {
+            if (dshd[i].getMaHoaDon().equalsIgnoreCase(ma)) {
                 int k;
                 do {
                 System.out.println("Chon thong tin can sua:");
@@ -151,9 +154,9 @@ public class DSHD
             return;
             }
          }
-            System.out.println("Khong tim thay ma hoa don: " + maHD);
+            System.out.println("Khong tim thay ma hoa don: " + ma);
     }
-    public void XoaHD(String maHD)
+    public void XoaHD()
     {
         Scanner sc = new Scanner(System.in);
         boolean tim = false;
@@ -161,7 +164,7 @@ public class DSHD
         String ma =sc.nextLine();
         for(int i=0;i<n;i++)
         {
-            if(dshd[i].getMaHoaDon().equalsIgnoreCase(maHD))
+            if(dshd[i].getMaHoaDon().equalsIgnoreCase(ma))
             {
                 for(int j=i;j<n-1;j++)
                 {
@@ -170,7 +173,7 @@ public class DSHD
                 dshd=Arrays.copyOf(dshd, n-1);
                 n--;
                 tim=true;
-                System.out.println("Da xoa hoa don co ma: " + maHD);
+                System.out.println("Da xoa hoa don co ma: " + ma);
                 break;
             }
         }
@@ -179,12 +182,15 @@ public class DSHD
             System.out.println("Khong tim thay hoa don can xoa!");
         }
     }
-    public void timkiemma(String maHD)
+    public void timkiemma()
     {
+        Scanner sc = new Scanner(System.in);
         boolean found = false;
+        System.out.println("Nhap vao ma hoa don can tim: ");
+        String ma = sc.nextLine();
         for(int i=0;i<n;i++)
         {
-            if(dshd[i].getMaHoaDon().equalsIgnoreCase(maHD))
+            if(dshd[i].getMaHoaDon().equalsIgnoreCase(ma))
             {
                 System.out.println("Thong tin hoa don can tim: ");
                 dshd[i].xuathd();
@@ -192,7 +198,7 @@ public class DSHD
                 break;
             }
         }
-        if(!found) System.out.println("Khong tim thay hoa don co ma: "+maHD );
+        if(!found) System.out.println("Khong tim thay hoa don co ma: "+ma );
     }
     public HoaDon[] timtheomakhachhang(String maKH)
     {
@@ -217,17 +223,17 @@ public class DSHD
     public void thongketongtientungayatoingayb()
     {
         Scanner sc = new Scanner(System.in);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         dateFormat.setLenient(false);
 
         System.out.println("=== THONG KE TONG TIEN THEO NGAY ===");
 
         try {
-            System.out.print("Nhap ngay bat dau (A) theo dinh dang dd/MM/yyyy: ");
+            System.out.print("Nhap ngay bat dau (A) theo dinh dang yyyy-MM-dd: ");
             String strNgayA = sc.nextLine();
             Date ngayA = dateFormat.parse(strNgayA);
 
-            System.out.print("Nhap ngay ket thuc (B) theo dinh dang dd/MM/yyyy: ");
+            System.out.print("Nhap ngay ket thuc (B) theo dinh dang yyyy-MM-dd: ");
             String strNgayB = sc.nextLine();
             Date ngayB = dateFormat.parse(strNgayB);
 
@@ -287,7 +293,7 @@ public class DSHD
                 return i;
             }
         }
-        return -1; // Khong tim thay
+        return -1;  
     }
 
     public void thongKeTheoKhachHangVaNam()

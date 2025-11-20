@@ -171,6 +171,9 @@ public class DSKH
     }
     public KhachHang timkiemma(String maKH)
     {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Nhap vao ma khach hang can tim: ");
+        maKH=sc.nextLine();
         for(int i=0;i<n;i++)
         {
             if(dskh[i].getMakhachhang().equalsIgnoreCase(maKH))
@@ -266,5 +269,64 @@ public class DSKH
 
     public void setN(int n) {
         this.n = n;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //them
+    //tim theo ten
+    public KhachHang[] timtheoten(String tentim)
+    {
+        int d=0;
+        boolean tim=false;
+        for(int i=0;i<n;i++)
+        {
+            if(dskh[i].getTenkh().equalsIgnoreCase(tentim));
+            {
+                d++;
+                tim=true;
+            }
+        }
+        int d1=0;
+        KhachHang[] kq = new KhachHang[d];
+        for(int i=0;i<n;i++)
+        {
+            if(dskh[i].getTenkh().equalsIgnoreCase(tentim));
+            {
+                kq[d1]=dskh[i];
+                d1++;
+            }
+        }
+        if(!tim) System.out.println("Khong tim thay ten khach hang " + tentim);
+        return kq;
+    }
+    public void themkh(KhachHang k)
+    {
+        dskh=Arrays.copyOf(dskh, n+1);
+        dskh[n]=k;
+        n++;
     }
 }
